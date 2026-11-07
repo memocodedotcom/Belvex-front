@@ -94,7 +94,7 @@ function App() {
     <div className="announcement"><span>BIENVENUE CHEZ BELVEX</span><span className="announcement-separator">·</span><span>PREMIUM NUTRITION POUR VOTRE ÉQUILIBRE</span><ArrowRight size={13} /></div>
     <header className="site-header">
       <div className="header-inner">
-        <a className="brand-wordmark" href="#top" aria-label="BELVEX, accueil"><Crown size={18} fill="currentColor" /><span>BELVEX</span><small>PREMIUM NUTRITION</small></a>
+        <a className="brand-mark header-brand" href="#top" aria-label="BELVEX, accueil"><img src="/brand/belvex-logo.png" alt="BELVEX — Premium Nutrition" /></a>
         <nav className={menuOpen ? 'nav nav-open' : 'nav'} aria-label="Navigation principale">
           <a href="#collection" onClick={() => setMenuOpen(false)}>La collection</a>
           <a href="#maison" onClick={() => setMenuOpen(false)}>La maison</a>
@@ -114,7 +114,10 @@ function App() {
             <span className="hero-tag">NUTRITION · BALANCE · VITALITÉ</span>
             <h1>Votre équilibre,<br />au cœur de<br /><em>chaque jour.</em></h1>
             <p className="hero-subtitle">Cinq formules soigneusement pensées pour accompagner vos besoins nutritionnels, au quotidien.</p>
-            <div className="hero-actions"><a className="button button-hero" href="#collection">Découvrir la collection <ArrowRight size={16} /></a></div>
+            <div className="hero-actions">
+              <a className="button button-hero" href="#collection">Découvrir la collection <ArrowRight size={16} /></a>
+              <button className="button button-hero-secondary" onClick={openForm}>Professionnels : devenir partenaire <ArrowUpRight size={15} /></button>
+            </div>
           </div>
           <div className="hero-art">
             <div className="hero-orbit hero-orbit-a" /><div className="hero-orbit hero-orbit-b" />
@@ -154,7 +157,7 @@ function App() {
 
       <section className="about section" id="maison">
         <div className="about-art"><div className="about-feature">{siteAssets.brandStoryImage ? <img className="about-owner-image" src={siteAssets.brandStoryImage} alt={siteAssets.brandStoryAlt} /> : <><div className="about-pair"><Jar product={products[0]} /><Jar product={products[3]} /></div><span className="asset-slot-note">VISUEL DE MARQUE À AJOUTER</span></>}</div><div className="about-thumbnails">{[products[1], products[2], products[4]].map(item => <div className="about-thumb" key={item.slug}><Jar product={item} /><span>{item.code}</span></div>)}</div></div>
-        <div className="about-copy"><div className="eyebrow eyebrow-dark">À PROPOS DE BELVEX <span className="eyebrow-line" /></div><h2>Le bien-être<br />commence par<br /><em>l’équilibre.</em></h2><p>Chez BELVEX, nous croyons que le bien-être commence par l’équilibre. Notre mission est de proposer des compléments alimentaires soigneusement formulés, associant des ingrédients sélectionnés à des dosages précis, pour accompagner les besoins nutritionnels de chacun.</p><p>Que vous soyez sportif, professionnel actif ou simplement attentif à votre bien-être, BELVEX vous accompagne dans votre quotidien.</p><div className="brand-values"><span>INGRÉDIENTS SÉLECTIONNÉS</span><span>DOSAGES PRÉCIS</span><span>CINQ PILIERS</span></div><a href="#collection" className="text-link">Explorer les cinq piliers <ArrowRight size={16} /></a></div>
+        <div className="about-copy"><div className="eyebrow eyebrow-dark">À PROPOS DE BELVEX <span className="eyebrow-line" /></div><h2>Cinq formules.<br />Cinq piliers.<br /><em>Un équilibre.</em></h2><p>La collection BELVEX s’organise autour de cinq piliers : BALANCE, ENERGY, LIFE, VITALITY et EXCELLENCE. Chacun correspond à une formule distincte, de Magnesium Glycinate à Ashwagandha.</p><p>Explorez les ingrédients, les compositions et les informations disponibles pour chaque produit afin de trouver la formule qui correspond à vos besoins.</p><div className="brand-values"><span>BALANCE</span><span>ENERGY · LIFE</span><span>VITALITY · EXCELLENCE</span></div><a href="#collection" className="text-link">Explorer les cinq formules <ArrowRight size={16} /></a></div>
       </section>
 
       <section className="pillars">

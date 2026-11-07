@@ -39,12 +39,12 @@ export const products: Product[] = [
   },
   {
     code: 'BX–03', pillar: 'VITALITY', slug: 'zinc-glycinate', name: 'Zinc Glycinate',
-    tagline: 'La vitalité intérieure se reflète à l’extérieur.', measure: '30 mg par serving · 60 capsules',
-    figure: '30 mg', figureLabel: 'de zinc par serving', form: 'jar', tone: 'teal',
+    tagline: 'La vitalité intérieure se reflète à l’extérieur.', measure: '30 mg par portion · 60 capsules',
+    figure: '30 mg', figureLabel: 'de zinc par portion', form: 'jar', tone: 'teal',
     intro: 'Votre bien-être commence de l’intérieur et se reflète dans votre vitalité au quotidien.',
     description: ['BELVEX Zinc Glycinate apporte du zinc sous forme de glycinate, un minéral essentiel qui joue un rôle important dans de nombreuses fonctions de l’organisme.', 'Conçue pour les femmes comme pour les hommes, cette formule contribue à accompagner votre équilibre nutritionnel, prendre soin de votre beauté et soutenir votre vitalité, à chaque étape de votre quotidien.'],
     claims: ['Beauté naturelle : maintenir une peau, des cheveux et des ongles normaux.', 'Défenses naturelles : soutenir le fonctionnement normal du système immunitaire.', 'Équilibre hormonal masculin : maintenir un taux normal de testostérone dans le sang.', 'Fertilité : contribuer à une fertilité et une reproduction normales.', 'Protection cellulaire : protéger les cellules contre le stress oxydatif.', 'Vitalité : participer à un métabolisme énergétique normal.'],
-    composition: [{ ingredient: 'Zinc (bisglycinate)', amount: '30 mg / serving' }],
+    composition: [{ ingredient: 'Zinc (bisglycinate)', amount: '30 mg / portion' }],
     signature: 'BELVEX — La force de votre équilibre. L’éclat de votre vitalité.',
   },
   {
