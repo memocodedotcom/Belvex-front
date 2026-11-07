@@ -2,6 +2,8 @@
 
 Single-page, responsive BELVEX brand and product collection frontend built with React, TypeScript and Vite. The product renders are drawn in CSS, so the page does not require WebGL.
 
+The homepage includes the brand story, an owner-ready social-proof section, a professional partner section, and a FAQ. Empty proof entries render transparent upload slots; no partner, testimonial, certification, or quality claim is fabricated.
+
 ## Run locally
 
 1. Install Node.js 20 or newer.
@@ -12,6 +14,10 @@ Single-page, responsive BELVEX brand and product collection frontend built with 
 The partner form does not send or store data. With a configured WhatsApp number it opens a prefilled message in WhatsApp; without one it offers a copyable message and clearly reports that the contact number is not configured.
 
 Product names, taglines, amounts, copy and claims come from the supplied BELVEX marketing dossier. The supplied WhatsApp product montages are not used because their packaging text contains claims that differ from the dossier.
+
+## Adding owner assets and content
+
+See [docs/ASSET_SLOTS.md](docs/ASSET_SLOTS.md) for the exact folders, filenames, and fields to populate when BELVEX supplies approved photos, partner logos, testimonials, or shareable quality documents. FAQ answers about commercial terms remain out until the owner confirms them.
 
 ## Not included
 

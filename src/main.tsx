@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { ArrowDown, ArrowRight, ArrowUpRight, Check, Crown, Menu, PackageCheck, X } from 'lucide-react'
+import { ArrowDown, ArrowRight, ArrowUpRight, Check, Crown, Menu, X } from 'lucide-react'
 import '@fontsource/manrope/latin-400.css'
 import '@fontsource/manrope/latin-500.css'
 import '@fontsource/manrope/latin-600.css'
@@ -14,31 +14,36 @@ import '@fontsource/cormorant-garamond/latin-500-italic.css'
 import '@fontsource/cormorant-garamond/latin-ext-500.css'
 import '@fontsource/cormorant-garamond/latin-ext-500-italic.css'
 import { products, type Product } from './products'
+import { faqItems } from './content/faq'
+import { proof } from './content/proof'
+import { siteAssets } from './content/siteAssets'
 import './styles.css'
 
 function Jar({ product, large = false }: { product: Product; large?: boolean }) {
   return <div className={`jar-scene ${large ? 'jar-scene-large' : ''} tone-${product.tone}`} aria-label={`Illustration du produit ${product.name}`} role="img">
-    <span className="orbit orbit-one" /><span className="orbit orbit-two" />
-    <div className={`jar ${product.form}`}>
-      <div className="jar-cap"><span className="cap-line" /><span className="cap-crown"><Crown size={18} fill="currentColor" /></span></div>
-      <div className="jar-neck" />
-      <div className="jar-body">
-        <div className="jar-label">
-          <div className="label-rule"><span /> BELVEX <Crown size={13} fill="currentColor" /><span /></div>
-          <div className="label-pills">BALANCE · ENERGY · LIFE · VITALITY · EXCELLENCE</div>
-          <div className="label-premium">PREMIUM NUTRITION</div>
-          <div className="label-product">{product.name}</div>
-          <div className="label-pillar">{product.pillar}</div>
-          <div className="label-figure">{product.figure}</div>
-          <div className="label-measure">{product.figureLabel}</div>
-          <div className="label-footer">COMPLÉMENT ALIMENTAIRE</div>
+    {product.image ? <img className="product-owner-image" src={product.image} alt="" /> : <>
+      <span className="orbit orbit-one" /><span className="orbit orbit-two" />
+      <div className={`jar ${product.form}`}>
+        <div className="jar-cap"><span className="cap-line" /><span className="cap-crown"><Crown size={18} fill="currentColor" /></span></div>
+        <div className="jar-neck" />
+        <div className="jar-body">
+          <div className="jar-label">
+            <div className="label-rule"><span /> BELVEX <Crown size={13} fill="currentColor" /><span /></div>
+            <div className="label-pills">BALANCE · ENERGY · LIFE · VITALITY · EXCELLENCE</div>
+            <div className="label-premium">PREMIUM NUTRITION</div>
+            <div className="label-product">{product.name}</div>
+            <div className="label-pillar">{product.pillar}</div>
+            <div className="label-figure">{product.figure}</div>
+            <div className="label-measure">{product.figureLabel}</div>
+            <div className="label-footer">COMPLÉMENT ALIMENTAIRE</div>
+          </div>
+          <div className="jar-glint" />
         </div>
-        <div className="jar-glint" />
+        <div className="jar-base" />
       </div>
-      <div className="jar-base" />
-    </div>
-    <div className="jar-shadow" />
-    {product.form === 'tub' && <div className="powder-scoop" aria-hidden="true" />}
+      <div className="jar-shadow" />
+      {product.form === 'tub' && <div className="powder-scoop" aria-hidden="true" />}
+    </>}
   </div>
 }
 
@@ -94,6 +99,7 @@ function App() {
           <a href="#collection" onClick={() => setMenuOpen(false)}>La collection</a>
           <a href="#maison" onClick={() => setMenuOpen(false)}>La maison</a>
           <a href="#professionnels" onClick={() => setMenuOpen(false)}>Professionnels</a>
+          <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
           <button className="nav-cta" onClick={openForm}>Nous contacter <ArrowUpRight size={15} /></button>
         </nav>
         <button className="menu-toggle" aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
@@ -147,17 +153,36 @@ function App() {
       </section>
 
       <section className="about section" id="maison">
-        <div className="about-art"><div className="about-feature"><div className="about-pair"><Jar product={products[0]} /><Jar product={products[3]} /></div></div><div className="about-thumbnails">{[products[1], products[2], products[4]].map(item => <div className="about-thumb" key={item.slug}><Jar product={item} /><span>{item.code}</span></div>)}</div></div>
-        <div className="about-copy"><div className="eyebrow eyebrow-dark">À PROPOS DE BELVEX <span className="eyebrow-line" /></div><h2>Le bien-être<br />commence par<br /><em>l’équilibre.</em></h2><p>Chez BELVEX, nous croyons que le bien-être commence par l’équilibre. Notre mission est de proposer des compléments alimentaires soigneusement formulés, associant des ingrédients sélectionnés à des dosages précis, pour accompagner les besoins nutritionnels de chacun.</p><p>Que vous soyez sportif, professionnel actif ou simplement attentif à votre bien-être, BELVEX vous accompagne dans votre quotidien.</p><a href="#collection" className="text-link">Explorer les cinq piliers <ArrowRight size={16} /></a></div>
+        <div className="about-art"><div className="about-feature">{siteAssets.brandStoryImage ? <img className="about-owner-image" src={siteAssets.brandStoryImage} alt={siteAssets.brandStoryAlt} /> : <><div className="about-pair"><Jar product={products[0]} /><Jar product={products[3]} /></div><span className="asset-slot-note">VISUEL DE MARQUE À AJOUTER</span></>}</div><div className="about-thumbnails">{[products[1], products[2], products[4]].map(item => <div className="about-thumb" key={item.slug}><Jar product={item} /><span>{item.code}</span></div>)}</div></div>
+        <div className="about-copy"><div className="eyebrow eyebrow-dark">À PROPOS DE BELVEX <span className="eyebrow-line" /></div><h2>Le bien-être<br />commence par<br /><em>l’équilibre.</em></h2><p>Chez BELVEX, nous croyons que le bien-être commence par l’équilibre. Notre mission est de proposer des compléments alimentaires soigneusement formulés, associant des ingrédients sélectionnés à des dosages précis, pour accompagner les besoins nutritionnels de chacun.</p><p>Que vous soyez sportif, professionnel actif ou simplement attentif à votre bien-être, BELVEX vous accompagne dans votre quotidien.</p><div className="brand-values"><span>INGRÉDIENTS SÉLECTIONNÉS</span><span>DOSAGES PRÉCIS</span><span>CINQ PILIERS</span></div><a href="#collection" className="text-link">Explorer les cinq piliers <ArrowRight size={16} /></a></div>
       </section>
 
       <section className="pillars">
         {['BALANCE', 'ENERGY', 'LIFE', 'VITALITY', 'EXCELLENCE'].map((pillar, index) => <button className={`pillar pillar-${index + 1}`} key={pillar} onClick={() => openProduct([0, 1, 3, 2, 4][index])}><span className="pillar-letter">{pillar[0]}</span><span className="pillar-name">{pillar}</span><span className="pillar-code">BX–0{[1, 2, 4, 3, 5][index]}</span></button>)}
       </section>
 
+      <section className="proof-section" id="confiance">
+        <div className="proof-heading"><div><div className="eyebrow eyebrow-dark">TRANSPARENCE & CONFIANCE <span className="eyebrow-line" /></div><h2>La confiance se construit<br /><em>avec des preuves.</em></h2></div><p>Les partenaires, retours d’expérience et documents qualité seront publiés ici après validation et accord de leurs propriétaires.</p></div>
+        <div className="proof-grid">
+          {proof.partners.map(partner => <article className="proof-card proof-partner" key={`${partner.name}-${partner.city}`}><div className="proof-mark">{partner.logo ? <img src={partner.logo} alt={`${partner.name} logo`} /> : partner.name.slice(0, 1)}</div><span className="proof-type">PARTENAIRE · {partner.category.replaceAll('-', ' ').toUpperCase()}</span><h3>{partner.name}</h3><p>{partner.city}</p></article>)}
+          {proof.testimonials.map(item => <article className="proof-card proof-quote" key={`${item.person}-${item.organization}`}><span className="proof-type">TÉMOIGNAGE PROFESSIONNEL</span><blockquote>« {item.quote} »</blockquote><div className="proof-person">{item.portrait && <img src={item.portrait} alt="" />}<span><strong>{item.person}</strong><small>{item.role} · {item.organization}, {item.city}</small></span></div></article>)}
+          {proof.qualityDocuments.map(item => <a className="proof-card proof-document" href={item.document} key={item.title} target="_blank" rel="noreferrer"><span className="proof-type">DOCUMENT QUALITÉ</span><h3>{item.title}</h3><p>{item.description}</p><span className="proof-document-link">Consulter le document <ArrowUpRight size={14} /></span></a>)}
+          {proof.partners.length + proof.testimonials.length + proof.qualityDocuments.length === 0 && <>
+            <article className="proof-slot"><span className="proof-slot-index">01</span><div><h3>Partenaires</h3><p>Logos et noms ajoutés avec l’accord des établissements.</p></div><span className="proof-slot-state">EMPLACEMENT PRÉVU</span></article>
+            <article className="proof-slot"><span className="proof-slot-index">02</span><div><h3>Retours d’expérience</h3><p>Témoignages publiés avec validation et consentement.</p></div><span className="proof-slot-state">EMPLACEMENT PRÉVU</span></article>
+            <article className="proof-slot"><span className="proof-slot-index">03</span><div><h3>Qualité & traçabilité</h3><p>Documents partageables ajoutés après validation par BELVEX.</p></div><span className="proof-slot-state">EMPLACEMENT PRÉVU</span></article>
+          </>}
+        </div>
+      </section>
+
       <section className="professionals" id="professionnels">
-        <div className="pro-inner"><div className="eyebrow">ESPACE PROFESSIONNELS <span className="eyebrow-line" /></div><h2>Faites une place<br />à <em>l’équilibre.</em></h2><p>Vous représentez une pharmacie, une parapharmacie, une salle de sport ou un réseau de distribution ? Échangeons autour de la gamme BELVEX.</p><div className="pro-types"><span><PackageCheck size={17} /> Parapharmacies & pharmacies</span><span><PackageCheck size={17} /> Salles de sport</span><span><PackageCheck size={17} /> Distributeurs</span></div><button className="button button-gold" onClick={openForm}>Parlons partenariat <ArrowRight size={17} /></button></div>
-        <div className="pro-visual"><div className="pro-circle pro-circle-one" /><div className="pro-circle pro-circle-two" /><div className="pro-monogram">B<span>·</span>X</div><div className="pro-visual-caption">BELVEX / PARTENAIRES</div></div>
+        <div className="pro-inner"><div className="eyebrow">ESPACE PARTENAIRES <span className="eyebrow-line" /></div><h2>Construisons<br />un partenariat<br /><em>équilibré.</em></h2><p>BELVEX s’adresse aux professionnels qui souhaitent découvrir la gamme et échanger sur son référencement dans leur établissement.</p><div className="partner-segments"><article><span>01 / CONSEIL</span><h3>Pharmacies & parapharmacies</h3><p>Découvrez les cinq formules et leurs compositions.</p></article><article><span>02 / ACTIVITÉ</span><h3>Salles de sport</h3><p>Explorez la gamme orientée nutrition et activité.</p></article><article><span>03 / DISTRIBUTION</span><h3>Distributeurs</h3><p>Échangez avec BELVEX sur les produits de la collection.</p></article></div><div className="partner-process"><span><b>1</b> Présentez votre activité</span><span><b>2</b> Choisissez les produits d’intérêt</span><span><b>3</b> Échangez avec BELVEX</span></div><button className="button button-gold" onClick={openForm}>Parlons partenariat <ArrowRight size={17} /></button></div>
+        <div className="pro-visual">{siteAssets.partnersImage ? <img className="partners-owner-image" src={siteAssets.partnersImage} alt={siteAssets.partnersImageAlt} /> : <><div className="pro-circle pro-circle-one" /><div className="pro-circle pro-circle-two" /><div className="pro-monogram">B<span>·</span>X</div><div className="pro-visual-caption">VISUEL PARTENAIRES À AJOUTER</div></>}</div>
+      </section>
+
+      <section className="faq-section" id="faq">
+        <div className="faq-intro"><div className="eyebrow eyebrow-dark">QUESTIONS FRÉQUENTES <span className="eyebrow-line" /></div><h2>Les réponses<br />à vos <em>questions.</em></h2><p>Les conditions commerciales et détails logistiques seront précisés par l’équipe BELVEX.</p><button className="text-link" onClick={openForm}>Poser une question <ArrowRight size={15} /></button></div>
+        <div className="faq-list">{faqItems.map((item, index) => <details className="faq-item" key={item.question} open={index === 0}><summary><span className="faq-number">0{index + 1}</span><span>{item.question}</span><span className="faq-toggle">+</span></summary><p>{item.answer}</p></details>)}</div>
       </section>
 
       <section className={`contact-section ${formOpen ? 'contact-open' : ''}`} id="contact">

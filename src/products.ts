@@ -13,6 +13,8 @@ export type Product = {
   description: string[]
   claims: string[]
   composition: { ingredient: string; amount: string }[]
+  image?: string
+  imageAlt?: string
   signature: string
 }
 
