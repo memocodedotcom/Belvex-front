@@ -1,8 +1,8 @@
 # BELVEX — frontend
 
-Single-page, responsive BELVEX brand and product collection frontend built with React, TypeScript and Vite. The product renders are drawn in CSS, so the page does not require WebGL.
+Single-page, responsive BELVEX brand and product collection frontend built with React, TypeScript, Vite, and React Three Fiber. The hero jar is a procedural 3D scene with a styled DOM jar underneath as a loading and WebGL fallback.
 
-The homepage includes the brand story, an owner-ready social-proof section, a professional partner section, and a FAQ. Empty proof entries render transparent upload slots; no partner, testimonial, certification, or quality claim is fabricated.
+The visual direction follows the supplied blue nutrition-site reference while keeping BELVEX navy, gold, logo, product names, and approved copy. The homepage includes the brand story, an owner-ready social-proof section, a professional partner section, and a FAQ. Empty proof entries render clear slots; no partner, testimonial, certification, or quality claim is fabricated.
 
 ## Run locally
 

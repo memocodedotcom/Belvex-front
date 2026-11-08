@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { lazy, Suspense, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, Crown, Menu, X } from 'lucide-react'
 import '@fontsource/manrope/latin-400.css'
@@ -18,6 +18,8 @@ import { faqItems } from './content/faq'
 import { proof } from './content/proof'
 import { siteAssets } from './content/siteAssets'
 import './styles.css'
+
+const HeroProductScene = lazy(() => import('./components/HeroProductScene'))
 
 function Jar({ product, large = false }: { product: Product; large?: boolean }) {
   return <div className={`jar-scene ${large ? 'jar-scene-large' : ''} tone-${product.tone}`} aria-label={`Illustration du produit ${product.name}`} role="img">
@@ -47,15 +49,6 @@ function Jar({ product, large = false }: { product: Product; large?: boolean }) 
   </div>
 }
 
-function HeroCapsule() {
-  return <div className="hero-capsule" role="img" aria-label="Illustration d’une capsule BELVEX">
-    <div className="capsule-cap"><Crown size={18} fill="currentColor" /></div>
-    <div className="capsule-powder" />
-    <div className="capsule-body"><span className="capsule-brand">BELVEX</span><span className="capsule-seam" /><span className="capsule-monogram">B</span></div>
-    <span className="capsule-shadow" />
-  </div>
-}
-
 function App() {
   const [selected, setSelected] = useState(0)
   const [detailOpen, setDetailOpen] = useState(false)
@@ -63,8 +56,14 @@ function App() {
   const [formOpen, setFormOpen] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [heroSceneEnabled, setHeroSceneEnabled] = useState(false)
   const [form, setForm] = useState({ name: '', business: '', type: 'Parapharmacie', city: '', phone: '' })
   const product = products[selected]
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setHeroSceneEnabled(true), 250)
+    return () => window.clearTimeout(timer)
+  }, [])
 
   const choose = (index: number) => {
     setSelected((index + products.length) % products.length)
@@ -111,21 +110,33 @@ function App() {
         <div className="hero-grain" />
         <div className="hero-inner">
           <div className="hero-copy">
-            <span className="hero-tag">NUTRITION · BALANCE · VITALITÉ</span>
-            <h1>Votre équilibre,<br />au cœur de<br /><em>chaque jour.</em></h1>
-            <p className="hero-subtitle">Cinq formules soigneusement pensées pour accompagner vos besoins nutritionnels, au quotidien.</p>
+            <span className="hero-tag">PREMIUM NUTRITION <i /> FABRIQUÉ AU MAROC</span>
+            <h1>L’excellence au service<br />de votre <em>équilibre.</em></h1>
+            <p className="hero-subtitle">Cinq formules précises, conçues autour de cinq piliers pour accompagner vos besoins nutritionnels.</p>
             <div className="hero-actions">
-              <a className="button button-hero" href="#collection">Découvrir la collection <ArrowRight size={16} /></a>
-              <button className="button button-hero-secondary" onClick={openForm}>Professionnels : devenir partenaire <ArrowUpRight size={15} /></button>
+              <button className="button button-gold" onClick={openForm}>Devenir partenaire <ArrowUpRight size={16} /></button>
+              <a className="button button-outline" href="#collection">Découvrir la collection <ArrowRight size={16} /></a>
             </div>
+            <div className="hero-proof"><span>Fabriqué au Maroc</span><i /> <span>Dosages précis</span><i /> <span>Cinq formules</span></div>
           </div>
           <div className="hero-art">
             <div className="hero-orbit hero-orbit-a" /><div className="hero-orbit hero-orbit-b" />
-            <HeroCapsule />
-            <div className="hero-art-note"><span>FORMULÉE AVEC SOIN</span><span>01 — 05</span></div>
+            <div className="hero-jar">
+              <div className="hero-jar-fallback" aria-hidden={heroSceneEnabled}><Jar product={products[0]} large /></div>
+              {heroSceneEnabled && <Suspense fallback={null}><HeroProductScene /></Suspense>}
+            </div>
+            <div className="hero-product-note"><span>BX–01 · BALANCE</span><strong>Magnesium Glycinate</strong><small>133 mg par capsule</small></div>
+            <div className="hero-art-note"><span>BELVEX · PREMIUM NUTRITION</span><span>01 — 05</span></div>
           </div>
         </div>
         <a className="hero-scroll" href="#collection"><span>FAIRE DÉFILER</span><ArrowDown size={14} /></a>
+      </section>
+
+      <section className="trust-strip" aria-label="Les repères BELVEX">
+        <div><span className="trust-mark">✦</span><strong>Fabriqué au Maroc</strong></div>
+        <div><span className="trust-mark">✦</span><strong>Dosages précis</strong></div>
+        <div><span className="trust-mark">✦</span><strong>5 formules complémentaires</strong></div>
+        <div><span className="trust-mark">✦</span><strong>5 piliers BELVEX</strong></div>
       </section>
 
       <section className="collection section" id="collection">

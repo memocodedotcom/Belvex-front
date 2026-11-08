@@ -11,10 +11,13 @@
   "dependencies": {
     "@fontsource/cormorant-garamond": "latest",
     "@fontsource/manrope": "latest",
+    "@react-three/fiber": "^9.8.2",
+    "@types/three": "^0.187.0",
     "@vitejs/plugin-react": "latest",
     "lucide-react": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "three": "^0.187.0",
     "typescript": "latest",
     "vite": "latest"
   },
