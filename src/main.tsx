@@ -107,10 +107,8 @@ function App() {
 
     <main id="main">
       <section className="hero" id="top">
-        <div className="hero-grain" />
         <div className="hero-inner">
           <div className="hero-copy">
-            <span className="hero-tag">PREMIUM NUTRITION <i /> FABRIQUÉ AU MAROC</span>
             <h1>L’excellence au service<br />de votre <em>équilibre.</em></h1>
             <p className="hero-subtitle">Cinq formules précises, conçues autour de cinq piliers pour accompagner vos besoins nutritionnels.</p>
             <div className="hero-actions">
