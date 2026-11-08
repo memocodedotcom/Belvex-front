@@ -37,3 +37,7 @@
 }
 
 @media (max-width: 680px) { .header-brand { width: 108px; height: 40px; } }
+
+.hero h1 em { font-family: inherit; font-size: inherit; font-style: normal; font-weight: inherit; letter-spacing: inherit; color: #fff; }
+.hero .button-gold { background: #fff; color: #102d5b; box-shadow: 0 8px 24px #001d5633; }
+.hero .button-gold:hover { background: #f0f5ff; }
