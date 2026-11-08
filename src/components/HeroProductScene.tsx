@@ -108,27 +108,6 @@ function ProductJar({ animate }: { animate: boolean }) {
   </group>
 }
 
-function OrbitingCapsules({ animate }: { animate: boolean }) {
-  const orbit = useRef<Group>(null)
-  const ivory = useMemo(() => new MeshPhysicalMaterial({ color: '#f5f0e4', roughness: .35, clearcoat: .4 }), [])
-  const paleGold = useMemo(() => new MeshPhysicalMaterial({ color: '#d9bc75', roughness: .3, metalness: .35, clearcoat: .5 }), [])
-  useEffect(() => () => { ivory.dispose(); paleGold.dispose() }, [ivory, paleGold])
-  useFrame((_, delta) => {
-    if (orbit.current && animate) orbit.current.rotation.z += delta * .06
-  })
-
-  return <group ref={orbit} rotation={[.55, .15, -.32]}>
-    {Array.from({ length: 14 }, (_, index) => {
-      const angle = (index / 14) * Math.PI * 2
-      const radius = index % 2 === 0 ? 1.58 : 1.85
-      const material = index % 3 === 0 ? paleGold : ivory
-      return <mesh key={index} position={[Math.cos(angle) * radius, Math.sin(angle) * radius * .55, -.08]} rotation={[0, 0, angle + .8]} material={material}>
-        <capsuleGeometry args={[.055, .15, 4, 8]} />
-      </mesh>
-    })}
-  </group>
-}
-
 function Scene({ animate }: { animate: boolean }) {
   return <>
     <ambientLight intensity={1.05} />
@@ -136,7 +115,6 @@ function Scene({ animate }: { animate: boolean }) {
     <pointLight position={[4, 1, 1]} intensity={1.7} color="#7db6ff" />
     <pointLight position={[-3, -1, 0]} intensity={1.1} color="#c9a24a" />
     <group scale={.82}>
-      <OrbitingCapsules animate={animate} />
       <ProductJar animate={animate} />
     </group>
   </>

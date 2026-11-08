@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { ArrowDown, ArrowRight, ArrowUpRight, Check, Crown, Menu, X } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Check, Crown, Menu, X } from 'lucide-react'
 import '@fontsource/manrope/latin-400.css'
 import '@fontsource/manrope/latin-500.css'
 import '@fontsource/manrope/latin-600.css'
@@ -117,21 +117,16 @@ function App() {
               <button className="button button-gold" onClick={openForm}>Devenir partenaire <ArrowUpRight size={16} /></button>
               <a className="button button-outline" href="#collection">Découvrir la collection <ArrowRight size={16} /></a>
             </div>
-            <div className="hero-proof"><span>Fabriqué au Maroc</span><i /> <span>Dosages précis</span><i /> <span>Cinq formules</span></div>
           </div>
           <div className="hero-art">
-            <div className="hero-orbit hero-orbit-a" /><div className="hero-orbit hero-orbit-b" />
             <div className="hero-jar">
               {siteAssets.heroProductImage ? <img className="hero-owner-image" src={siteAssets.heroProductImage} alt={siteAssets.heroProductImageAlt} /> : <>
                 <div className="hero-jar-fallback" aria-hidden={heroSceneEnabled}><Jar product={products[0]} large /></div>
                 {heroSceneEnabled && <Suspense fallback={null}><HeroProductScene /></Suspense>}
               </>}
             </div>
-            <div className="hero-product-note"><span>BX–01 · BALANCE</span><strong>Magnesium Glycinate</strong><small>133 mg par capsule</small></div>
-            <div className="hero-art-note"><span>BELVEX · PREMIUM NUTRITION</span><span>01 — 05</span></div>
           </div>
         </div>
-        <a className="hero-scroll" href="#collection"><span>FAIRE DÉFILER</span><ArrowDown size={14} /></a>
       </section>
 
       <section className="trust-strip" aria-label="Les repères BELVEX">
