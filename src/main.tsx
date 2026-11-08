@@ -93,7 +93,7 @@ function App() {
     <div className="announcement"><span>BIENVENUE CHEZ BELVEX</span><span className="announcement-separator">·</span><span>PREMIUM NUTRITION POUR VOTRE ÉQUILIBRE</span><ArrowRight size={13} /></div>
     <header className="site-header">
       <div className="header-inner">
-        <a className="brand-mark header-brand" href="#top" aria-label="BELVEX, accueil"><img src="/brand/belvex-logo.png" alt="BELVEX — Premium Nutrition" /></a>
+        <a className="brand-mark header-brand" href="#top" aria-label="BELVEX, accueil"><img src="/brand/belvex-logo-on-blue.png" alt="BELVEX" /></a>
         <nav className={menuOpen ? 'nav nav-open' : 'nav'} aria-label="Navigation principale">
           <a href="#collection" onClick={() => setMenuOpen(false)}>La collection</a>
           <a href="#maison" onClick={() => setMenuOpen(false)}>La maison</a>
@@ -218,7 +218,7 @@ function App() {
     </main>
 
     <footer className="footer">
-      <div className="footer-top"><a className="brand-mark footer-brand" href="#top"><img src="/brand/belvex-logo.png" alt="BELVEX — Premium Nutrition" /></a><p>Votre équilibre.<br /><em>Votre vitalité. Votre excellence.</em></p><a className="footer-up" href="#top" aria-label="Retour en haut"><ArrowUpRight /></a></div>
+      <div className="footer-top"><a className="brand-mark footer-brand" href="#top"><img src="/brand/belvex-logo-on-blue.png" alt="BELVEX" /></a><p>Votre équilibre.<br /><em>Votre vitalité. Votre excellence.</em></p><a className="footer-up" href="#top" aria-label="Retour en haut"><ArrowUpRight /></a></div>
       <div className="footer-bottom"><span>© BELVEX · PREMIUM NUTRITION</span><span>BALANCE · ENERGY · LIFE · VITALITY · EXCELLENCE</span><a href="#contact">CONTACT PROFESSIONNELS <ArrowUpRight size={13} /></a></div>
     </footer>
   </>
