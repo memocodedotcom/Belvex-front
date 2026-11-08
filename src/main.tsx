@@ -122,8 +122,10 @@ function App() {
           <div className="hero-art">
             <div className="hero-orbit hero-orbit-a" /><div className="hero-orbit hero-orbit-b" />
             <div className="hero-jar">
-              <div className="hero-jar-fallback" aria-hidden={heroSceneEnabled}><Jar product={products[0]} large /></div>
-              {heroSceneEnabled && <Suspense fallback={null}><HeroProductScene /></Suspense>}
+              {siteAssets.heroProductImage ? <img className="hero-owner-image" src={siteAssets.heroProductImage} alt={siteAssets.heroProductImageAlt} /> : <>
+                <div className="hero-jar-fallback" aria-hidden={heroSceneEnabled}><Jar product={products[0]} large /></div>
+                {heroSceneEnabled && <Suspense fallback={null}><HeroProductScene /></Suspense>}
+              </>}
             </div>
             <div className="hero-product-note"><span>BX–01 · BALANCE</span><strong>Magnesium Glycinate</strong><small>133 mg par capsule</small></div>
             <div className="hero-art-note"><span>BELVEX · PREMIUM NUTRITION</span><span>01 — 05</span></div>

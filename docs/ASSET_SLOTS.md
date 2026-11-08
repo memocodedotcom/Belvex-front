@@ -4,6 +4,7 @@ Place owner-approved files in the folders below. Keep the filenames stable, then
 
 ## Brand story
 
+- `products/belvex-hero.webp` — preferred campaign photo of a BELVEX product held in hand, matching the homepage reference. Recommended landscape composition with the product on the left and open blue space around it, at least 1400 × 1000 px. Set `siteAssets.heroProductImage` to `/uploads/products/belvex-hero.webp`; until then the 3D product illustration remains visible.
 - `brand/belvex-story.webp` — optional team, founder, production, or brand photograph. Recommended landscape crop, at least 1400 × 1000 px. Set `siteAssets.brandStoryImage` to `/uploads/brand/belvex-story.webp`.
 - `brand/belvex-partners.webp` — optional approved partner or retail image. Set `siteAssets.partnersImage` to `/uploads/brand/belvex-partners.webp`.
 - `products/<product-slug>.webp` — optional approved packshot for any product. Set that product's `image` and `imageAlt` fields in `src/products.ts`.
